@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reg Form</title>
+    <style>
+        h1 {
+            color: red;
+        }
+        body{
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Registration Form</h1>
+        <form name="registrationForm" onsubmit="return validateForm()">
+            <table width="40%">
+                <tr>
+                    <th><label for="fn">First name: </label></th>
+                    <th><input type="text" name="fn"></th>
+                    <th><span id="fnError" style="color: red;"></span></th>
+                </tr>
+                <tr>
+                    <th><label for="ln">Last Name: </label></th>
+                    <th><input type="text" name="ln"></th>
+                </tr>
+                <tr>
+                    <th><label for="email">Email: </label></th>
+                    <th><input type="text" name="email"></th>
+                </tr>
+                <tr>
+                    <th><label for="password">Password: </label></th>
+                    <th><input type="password" name="password"></th>
+                </tr>
+                <tr>
+                    <th><label for="repassword">Re-password: </label></th>
+                    <th><input type="password" name="repassword"></th>
+                </tr>
+                <tr>
+                    <th><label for="gender">Gender: </label></th>
+                    <th>
+                        <input type="radio" name="gender">Male<br>
+                        <input type="radio" name="gender">Female
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="pno">Phone Number: </label></th>
+                    <th><input type="text" name="pno"></th>
+                </tr>
+                <tr>
+                    <th><label for="address">Address: </label></th>
+                    <th><textarea></textarea></th>
+                </tr>
+                <tr>
+                    <th><label for="state">State: </label></th>
+                    <th><input type="text" name="state"></th>
+                </tr>
+                <tr>
+                    <th><label for="country">Country: </label></th>
+                    <th><select>
+                            <option>Choose your country</option>
+                            <option>India</option>
+                            <option>USA</option>
+                            <option>Canada</option>
+                            <option>Spain</option>
+                        </select></th>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="lang">Languages Known: </label>
+                    </th>
+                    <th>
+                        <input type="checkbox">English
+                        <input type="checkbox">Kannada
+                        <input type="checkbox">Hindi
+                        <input type="checkbox">Telugu
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2" align="left">
+                        <input type="checkbox">Hereby I declare all the given details are true
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2" align="right">
+                        <p>Log in to <a href="https://www.ethnus.com" target="_blank">Ethnus</a> website</p>
+                    </th>
+                </tr>
+            </table><br>
+            <input type="submit" value="Register">
+        </form>
+    </center>
+    <script>
+        function validateForm() {
+            var firstName = document.forms["registrationForm"]["fn"].value;
+            var lastName = document.forms["registrationForm"]["ln"].value;
+            var email = document.forms["registrationForm"]["email"].value;
+            var password = document.forms["registrationForm"]["password"].value;
+            var repassword = document.forms["registrationForm"]["repassword"].value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var phoneNumber = document.forms["registrationForm"]["pno"].value;
+            var address = document.forms["registrationForm"]["address"].value;
+            var state = document.forms["registrationForm"]["state"].value;
+            var country = document.forms["registrationForm"]["country"].value;
+            var languagesKnown = document.querySelectorAll('input[type="checkbox"]:checked').length;
+
+            var firstNameError = document.getElementById("fnError");
+            var lastNameError = document.getElementById("lnError");
+            var emailError = document.getElementById("emailError");
+            var passwordError = document.getElementById("passwordError");
+            var repasswordError = document.getElementById("repasswordError");
+            var genderError = document.getElementById("genderError");
+            var phoneNumberError = document.getElementById("pnoError");
+            var addressError = document.getElementById("addressError");
+            var stateError = document.getElementById("stateError");
+            var countryError = document.getElementById("countryError");
+            var languagesKnownError = document.getElementById("languagesKnownError");
+
+            firstNameError.textContent = "";
+            lastNameError.textContent = "";
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            repasswordError.textContent = "";
+            genderError.textContent = "";
+            phoneNumberError.textContent = "";
+            addressError.textContent = "";
+            stateError.textContent = "";
+            countryError.textContent = "";
+            languagesKnownError.textContent = "";
+
+            var isValid = true;
+
+            if (firstName === "") {
+                firstNameError.textContent = "First name is required";
+                isValid = false;
+            }
+
+            if (lastName === "") {
+                lastNameError.textContent = "Last name is required";
+                isValid = false;
+            }
+
+            if (email === "") {
+                emailError.textContent = "Email is required";
+                isValid = false;
+            }
+
+            if (!gender) {
+                genderError.textContent = "Gender is required";
+                isValid = false;
+            }
+
+            if (phoneNumber === "") {
+                phoneNumberError.textContent = "Phone Number is required";
+                isValid = false;
+            }
+
+            if (address === "") {
+                addressError.textContent = "Address is required";
+                isValid = false;
+            }
+
+            if (state === "") {
+                stateError.textContent = "State is required";
+                isValid = false;
+            }
+
+            if (country === "Choose your country") {
+                countryError.textContent = "Country is required";
+                isValid = false;
+            }
+
+            if (languagesKnown === 0) {
+                languagesKnownError.textContent = "At least one language must be selected";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

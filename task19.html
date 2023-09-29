@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function reverseNumber(number) {
+            const numString = number.toString();
+            const reversedString = numString.split('').reverse().join('');
+            const reversedNumber = parseFloat(reversedString);
+            if (number < 0) {
+                return -reversedNumber;
+            } else {
+                return reversedNumber;
+            }
+        }
+
+        const originalNumber = 32243;
+        const reversed = reverseNumber(originalNumber);
+        console.log("Original:", originalNumber);
+        console.log("Reversed:", reversed);
+
+    </script>
+</head>
+
+<body>
+    <h1>Open console to see the answer</h1>
+</body>
+
+</html>

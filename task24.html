@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgb(230, 230, 230);
+            max-width: 20%;
+        }
+        .last {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        #check {
+            float: left; /* Float the "Remember me" checkbox to the left */
+        }
+
+        #forpass {
+            float: right; /* Float the "Forgot Password" link to the right */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="https://isc20c.icomos.org/wp-content/uploads/2020/11/1024px-Instagram_logo.png" alt="" height="100">
+        </div>
+        <div class="mainform">
+            <div class="inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input name="first_name" placeholder="Username" class="form-control" type="text">
+                </div>
+              </div><br>
+              <div class="inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input name="password" placeholder="Password" class="form-control" type="password">
+                </div>
+              </div><br>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br>
+              <div id="last">
+                <span id="check">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                      </label>
+                </span>
+                <span id="forpass"><a href="#">Forgot Password</a></span>
+              </div>
+        </div><br><br>
+        <div class="fin">
+            <span><p>Don't have an account?</p><a href="#">Sign up</a></span>
+        </div>
+    </div>
+</body>
+</html>

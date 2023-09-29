@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <span class="error" id="nameError"></span><br><br>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            <span class="error" id="emailError"></span><br><br>
+
+            <label for="website">Website:</label>
+            <input type="text" id="website" name="website">
+            <span class="error" id="websiteError"></span><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+            <span class="error" id="messageError"></span><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const nameField = document.getElementById('name');
+        const emailField = document.getElementById('email');
+        const websiteField = document.getElementById('website');
+        const messageField = document.getElementById('message');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const websiteError = document.getElementById('websiteError');
+        const messageError = document.getElementById('messageError');
+
+        form.addEventListener('submit', function (event) {
+            let isValid = true;
+            nameError.textContent = '';
+            emailError.textContent = '';
+            websiteError.textContent = '';
+            messageError.textContent = '';
+
+            if (nameField.value.trim() === '') {
+                nameError.textContent = 'Name is required';
+                isValid = false;
+            }
+
+            if (emailField.value.trim() === '') {
+                emailError.textContent = 'Email is required';
+                isValid = false;
+            } else if (!isValidEmail(emailField.value.trim())) {
+                emailError.textContent = 'Invalid email format';
+                isValid = false;
+            }
+
+            if (websiteField.value.trim() !== '' && !isValidURL(websiteField.value.trim())) {
+                websiteError.textContent = 'Invalid website URL';
+                isValid = false;
+            }
+
+            if (messageField.value.trim() === '') {
+                messageError.textContent = 'Message is required';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidURL(url) {
+            const urlRegex = /^(https?:\/\/)?(www\.)?[\w.-]+\.[a-zA-Z]{2,4}(\S*)?$/;
+            return urlRegex.test(url);
+        }
+    </script>
+</body>
+
+</html>
